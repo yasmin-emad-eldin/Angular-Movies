@@ -1,0 +1,28 @@
+
+
+  <!-- /////////////////////////////////////////////////////////// -->
+  <!-- Name: <input class="form-control" type="text" [(ngModel)]="name" (ngModelChange)="textAreaEmpty()" (keypress)="onChangeEvent($event)" />
+<div>{{name}}</div> -->
+<!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="word" > -->
+<!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [ngModel]="word" (ngModelChange)="word=$event" > -->
+
+<!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (keypress)="onChangeEvent($event)" > -->
+<!-- <button class="btn btn-outline-success"(click)="search()" type="submit">Search</button> -->
+  <!-- ///////////////// -->
+  <div class="d-block">hi</div>
+  <div id="testFind" *ngFor="let hero of arryHeart; let i = index" >
+
+<div id={{hero}} [style.color]="arryHear">{{hero}}</div>
+
+  </div>
+  <div id="testFind1" *ngFor="let hero1 of arryHeart; let i = index">
+
+    <div id={{hero1}} [style.color]="getColor(hero1)" >{{hero1}}</div>
+    
+      </div>
+  <div id='3'>uuuu</div>
+
+ <div> {{counter}}</div>
+ <button (click)="add()">+</button>
+ <button (click)="minis()">-</button>
+     

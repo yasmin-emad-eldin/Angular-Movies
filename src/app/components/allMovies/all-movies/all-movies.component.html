@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <nav class="row navbar bg-light">
+    <div class="d-flex justify-content-center">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <input
+          class="form-control me-2"
+          type="text"
+          [(ngModel)]="name"
+          (ngModelChange)="textAreaEmpty()"
+          (keypress)="onChangeEvent($event)"
+        />
+      </div>
+      <div class="col-4 ms-3">
+        <button
+          class="btn btn-outline-info border-1 fw-bolder"
+          (click)="search()"
+          type="submit"
+          style="color: #808a8c"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="row d-flex justify-content-evenly">
+    <!-- <input type="number" readonly [(ngModel)]="total"/> -->
+    <!-- <div>{{total}}</div> -->
+
+    <div class="card mt-5" *ngFor="let item of movie" style="max-width: 17rem">
+      <div class="card-body">
+        <div>
+          <h5 class="card-title font-weight-bold mb-2">{{ item.title }}</h5>
+          <p class="card-text">
+            <i class="far fa-clock pe-2"></i>{{ item.release_date }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="bg-image hover-overlay ripple rounded-0"
+        data-mdb-ripple-color="light"
+      >
+        <img
+          class="img-fluid"
+          src="{{ picture + item.poster_path }}"
+          alt="Card image cap"
+        />
+        <a href="#!">
+          <div
+            class="mask"
+            style="background-color: rgba(251, 251, 251, 0.15)"
+          ></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <a
+            class="btn btn-link link-danger p-md-1 my-1"
+            data-mdb-toggle="collapse"
+            [routerLink]="['/detials', item.id]"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseContent"
+            >Read more</a
+          >
+          <div>
+            <i
+              class="fas fa-share-alt text-muted p-md-1 my-1 me-2"
+              data-mdb-toggle="tooltip"
+              data-mdb-placement="top"
+              title="Share this post"
+            ></i>
+       
+              <span (click)="addFavorite(item.id)"[style.color]="'gray'">
+            <i
+              class="fa-solid fa-heart fa-heart" id={{item.id}}
+              
+             ></i> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5 mb-5">
+      <tr>
+        <th
+          scope="row"
+          *ngFor="
+            let data of arrayOfDigits
+              | paginate : { itemsPerPage: 1, currentPage: pages }
+          "
+        ></th>
+        <td colspan="1"></td>
+        <td colspan="6">
+          <pagination-controls
+            (click)="pageid(pages)"
+            (pageChange)="pages = $event"
+          ></pagination-controls>
+        </td>
+      </tr>
+    </div>
+  </div>
+</div>
